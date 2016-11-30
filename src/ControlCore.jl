@@ -36,8 +36,10 @@ export
   numpoly,
   denpoly,
   issiso,
+  sisotype,
   ismimo,
   iscontinuous,
+  continuoustype,
   isdiscrete,
   samplingtime,
   zpkdata,
@@ -46,6 +48,8 @@ export
   zpk,
   ss,
   mimo,
+  lfd,
+  rfd,
   # Methods
   series,
   parallel,
@@ -56,6 +60,7 @@ export
   evalfr
 
 using Polynomials
+using PolynomialMatrices
 using RecipesBase
 using Compat
 import Compat.view
@@ -66,6 +71,7 @@ include("types/system/rationaltf.jl")
 include("types/system/zeropolegain.jl")
 include("types/system/statespace.jl")
 include("types/system/generalmimo.jl")
+include("types/system/mfd.jl")
 #include("display.jl")
 
 # Response types
