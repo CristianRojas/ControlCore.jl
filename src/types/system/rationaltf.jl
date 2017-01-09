@@ -157,22 +157,22 @@ convert(::Type{RationalTF{Siso{false},Continuous{false}}}, g::AbstractMatrix) =
   tf(g, zero(Float64))
 
 # Multiplicative and additive identities (meaningful only for SISO)
-one(::Type{RationalTF{Siso{true},Continuous{true}}})    =
+one{S,T}(::Type{RationalTF{Siso{true},Continuous{true},S,T}})    =
   tf(one(Int8))
-one(::Type{RationalTF{Siso{true},Continuous{false}}})   =
+one{S,T}(::Type{RationalTF{Siso{true},Continuous{false},S,T}})   =
   tf(one(Int8), zero(Float64))
-zero(::Type{RationalTF{Siso{true},Continuous{true}}})   =
+zero{S,T}(::Type{RationalTF{Siso{true},Continuous{true},S,T}})   =
   tf(zero(Int8))
-zero(::Type{RationalTF{Siso{true},Continuous{false}}})  =
+zero{S,T}(::Type{RationalTF{Siso{true},Continuous{false},S,T}})  =
   tf(zero(Int8), zero(Float64))
 
-one(s::RationalTF{Siso{true},Continuous{true}})   =
+one{S,T}(s::RationalTF{Siso{true},Continuous{true},S,T})   =
   tf(one(eltype(s.num)), one(eltype(s.den)))
-one(s::RationalTF{Siso{true},Continuous{false}})  =
+one{S,T}(s::RationalTF{Siso{true},Continuous{false},S,T})  =
   tf(one(eltype(s.num)), one(eltype(s.den)), zero(Float64))
-zero(s::RationalTF{Siso{true},Continuous{true}})  =
+zero{S,T}(s::RationalTF{Siso{true},Continuous{true},S,T})  =
   tf(zero(eltype(s.num)), one(eltype(s.den)))
-zero(s::RationalTF{Siso{true},Continuous{false}}) =
+zero{S,T}(s::RationalTF{Siso{true},Continuous{false},S,T}) =
   tf(zero(eltype(s.num)), one(eltype(s.den)), zero(Float64))
 
 # Inverse of a rational transfer function model
